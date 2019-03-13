@@ -19,10 +19,12 @@ class AuthorForm extends Component {
     event.preventDefault();
     this.props.postAuthor(this.state, this.props.closeModal);
   };
+  //name is a constant variable. means it is automaticlly go and search for a text to detect.
+  textChange = event =>
+    this.setState({ [event.target.name]: event.target.value });
 
   render() {
     const errors = this.props.errors;
-
     return (
       <div className="mt-5 p-2">
         <form onSubmit={this.submitAuthor}>
@@ -37,13 +39,25 @@ class AuthorForm extends Component {
             <div className="input-group-prepend">
               <span className="input-group-text">First Name</span>
             </div>
-            <input type="text" className="form-control" name="first_name" />
+            <input
+              type="text"
+              className="form-control"
+              name="first_name"
+              value={this.state.first_name}
+              onChange={this.textChange.bind(this)}
+            />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">Last Name</span>
             </div>
-            <input type="text" className="form-control" name="last_name" />
+            <input
+              type="text"
+              className="form-control"
+              name="last_name"
+              value={this.state.last_name}
+              onChange={this.textChange.bind(this)}
+            />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
